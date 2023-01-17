@@ -1,0 +1,74 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Barangay Services Management System",
+      "projectImage": "https://portfolio-nine-wine-88.vercel.app/images/barangay-hall.jpg",
+      "images": "",
+      "desc": "Barangay Services Management System is a Capstone Project developed to optime and digitalize the current Brgy. Transaction the client has. It is equiped of modules that automates the tranactions seamlessly. User will be able to request legal documents the Brgy. offers e.g Brgy. Clearance and Brgy. Indigency.",
+      "live": "",
+      "repo": "https://github.com/shanegel/BSMS",
+      "category": "fullstack"
+    },
+    {
+      "id": 2,
+      "name": "Homerun... | Real Estate",
+      "projectImage": "https://portfolio-nine-wine-88.vercel.app/images/realestate.png",
+      "images": "",
+      "desc": "Homerun as an e-commerce site built for Homeowners and brokers. This app enables users to create listings and specify whether their Home is for sale or for Rent. This app is built using React.js, TailwindCSS, Firebse and other NPM libraries. This has OAuth feature where user could either write or use their google acc to register. GeoApify API was used for Geo-coding and React-Leaflet to view the property location.",
+      "live": "https://realestate-gold.vercel.app/",
+      "repo": "https://github.com/shanegel/real-estate",
+      "category": "fullstack"
+    },
+    {
+      "id": 3,
+      "name": "MONITO | PETSHOP",
+      "projectImage": "https://portfolio-nine-wine-88.vercel.app/images/monito.png",
+      "images": "",
+      "desc": "Homerun as an e-commerce site built for Homeowners and brokers. This app enables users to create listings and specify whether their Home is for sale or for Rent. This app is built using React.js, TailwindCSS, Firebse and other NPM libraries. This has OAuth feature where user could either write or use their google acc to register. GeoApify API was used for Geo-coding and React-Leaflet to view the property location.",
+      "live": "https://petshop-xi.vercel.app/",
+      "repo": "https://github.com/shanegel/petshop",
+      "category": "fullstack"
+    },
+    {
+      "id": 4,
+      "name": "FOOD EXPRESS | E-FOOD",
+      "projectImage": "https://portfolio-nine-wine-88.vercel.app/images/foodexp.png",
+      "images": "",
+      "desc": "Foodexpress is an E-food app built for Food Shoppers. This app is supported by Firebase as backend and a RestAPI was used to display the available products seen in the web-app. This Project for Food Enthisiasts and Gourmet in search for food that they have never tried before.",
+      "live": "https://foodexpress-delta.vercel.app/",
+      "repo": "https://github.com/shanegel/fexpress",
+      "category": "frontend"
+    },
+    {
+      "id": 5,
+      "name": "Nepliks v.2 | Clone Project",
+      "projectImage": "https://portfolio-nine-wine-88.vercel.app/images/nepliks.png",
+      "images": "",
+      "desc": "A Cloning Project to test the skills I gained in my journey as a React Dev. This app enables the user to view latest movies and tv show updates. This Front-end project uses Firebase for authntication and TMDB RestAPI as the movei listings provider.",
+      "live": "https://nepliks.vercel.app/",
+      "repo": "",
+      "category": "frontend"
+    },
+    {
+      "id": 6,
+      "name": "Weather Map",
+      "projectImage": "https://portfolio-nine-wine-88.vercel.app/images/weather.png",
+      "images": "",
+      "desc": "More than just a Weather App. This is a practice project to test my skills in RestApi manipulation. This project consumes 3 Public RestApi namely OpenWeather for getting the location, AccuWeather API for fetching the 5 days forecast in the current location and GeoApify API for geo-coding.",
+      "live": "https://weatherapp-kohl-sigma.vercel.app/",
+      "repo": "",
+      "category": "frontend"
+    },
+    {
+      "id": 7,
+      "name": "SHORT.IO",
+      "projectImage": "https://portfolio-nine-wine-88.vercel.app/images/shorti.png",
+      "images": "",
+      "desc": "Short.io is more than just a link shortener. Aside from shortening the link, this also enable the user to generate a QR Code of the link in one go. This app consumes 2 Public RestAPI namely ShortCodeApi and QRCodeApi.",
+      "live": "https://shortio.vercel.app/",
+      "repo": "",
+      "category": "frontend"
+    }
+  ]
+}
