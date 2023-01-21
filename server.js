@@ -5,12 +5,12 @@ const env = require('dotenv');
 
 env.config({ path: './.env' });
 const port = process.env.PORT || 8080;
-const DB = process.env.DB_ATLAS;
+const db = process.env.DB_ATLAS;
 
 mongoose.set('strictQuery', true);
 
 mongoose
-  .connect(DB)
+  .connect(db)
   .then(() => {
     console.log('Connected to MongoDB_ATLAS');
   })

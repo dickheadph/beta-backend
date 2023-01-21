@@ -4,9 +4,9 @@ const PROJECT = require('../Schema/projectSchema');
 const sharp = require('sharp');
 const cloudinary = require('cloudinary').v2;
 
-const getProjects = AsyncHandler(async (req, res, next) => {
+exports.getProjects = AsyncHandler(async (req, res, next) => {
   const projects = await PROJECT.find();
-
+  console.log();
   res.status(200).json({
     status: 'success',
     length: projects.length,
@@ -16,20 +16,21 @@ const getProjects = AsyncHandler(async (req, res, next) => {
   });
 });
 
-const getProject = AsyncHandler(async (req, res, next) => {
-  const project = await PROJECT.findById(req.body.id);
+exports.getProject = AsyncHandler(async (req, res, next) => {
+  const project = await PROJECT.findById(req.params.id);
+  console.log(req.params);
   if (!project) {
     return next(new AppError('No tour found with that Id.', 404));
   }
   res.status(200).json({
     status: 'success',
     data: {
-      projects: project,
+      project,
     },
   });
 });
 
-const addProject = AsyncHandler(async (req, res, next) => {
+exports.addProject = AsyncHandler(async (req, res, next) => {
   const { name, description, live, repo, category } = req.body;
 
   let imageData = {};
@@ -62,10 +63,8 @@ const addProject = AsyncHandler(async (req, res, next) => {
     repo,
     category,
   });
-  const liveUrl = req.body.live.startsWith('http');
-  const liveRepo = req.body.repo.contains('github.com');
 
-  if (!liveUrl && !liveRepo && !newProject) {
+  if (!newProject) {
     return next(
       new AppError('Create project failed. Check feilds for wrong input.', 404)
     );
@@ -78,7 +77,7 @@ const addProject = AsyncHandler(async (req, res, next) => {
   });
 });
 
-const editProject = AsyncHandler(async (req, res, next) => {
+exports.editProject = AsyncHandler(async (req, res, next) => {
   const project = await PROJECT.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -94,7 +93,7 @@ const editProject = AsyncHandler(async (req, res, next) => {
   });
 });
 
-const deleteProject = AsyncHandler(async (req, res, next) => {
+exports.deleteProject = AsyncHandler(async (req, res, next) => {
   const project = await PROJECT.findByIdAndDelete(req.params.id);
 
   if (!project) {
@@ -105,11 +104,3 @@ const deleteProject = AsyncHandler(async (req, res, next) => {
     data: null,
   });
 });
-
-module.exports = {
-  getProjects,
-  getProject,
-  addProject,
-  editProject,
-  deleteProject,
-};

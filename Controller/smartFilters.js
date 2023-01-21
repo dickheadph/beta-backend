@@ -5,6 +5,7 @@ const PROJECT = require('../Schema/projectSchema');
 const responseStat = (res, data, stat) => {
   res.status(stat).json({
     status: 'success',
+    length: data.length,
     data: {
       projects: data,
     },
