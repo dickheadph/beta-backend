@@ -9,14 +9,18 @@ const db = process.env.DB_ATLAS;
 
 mongoose.set('strictQuery', true);
 
-mongoose
-  .connect(db)
-  .then(() => {
-    console.log('Connected to MongoDB_ATLAS');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+const connectDB = async () => {
+  await mongoose
+    .connect(db)
+    .then(() => {
+      console.log('Connected to MongoDB_ATLAS');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+connectDB();
 
 app.listen(port, () => {
   console.log(`Server Up and running on port ${port}`);

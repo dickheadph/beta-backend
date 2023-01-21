@@ -1,12 +1,12 @@
 const express = require('express');
 const AppErr = require('./Middlewares/AppError');
 const app = express();
+app.use(express.json());
 
 const projectRoute = require('./Routes/projectRoute');
 const mailRoute = require('./Routes/mailRoute');
 const adminRoute = require('./Routes/adminRoute');
 
-app.use(express.json());
 app.use('/portfolio/api/projects', projectRoute);
 app.use('/portfolio/api/mail-dev', mailRoute);
 app.use('/portfolio/api/admin', adminRoute);

@@ -4,8 +4,13 @@ const projectController = require('../Controller/projectController');
 const smartFilters = require('../Controller/smartFilters');
 const uploadCover = require('../Utility/ImageUpload');
 
-const { getProjects, getProject, addProject, editProject, deleteProject } =
-  projectController;
+const {
+  getProjects,
+  getSingleProject,
+  addProject,
+  editProject,
+  deleteProject,
+} = projectController;
 const { getFullstack, getFrontend, getApi, getApp } = smartFilters;
 const router = express.Router();
 
@@ -18,7 +23,7 @@ router.get('/native-app', getApp, getProjects);
 router.route('/').get(getProjects).post(uploadCover, addProject);
 router
   .route('/:projectId')
-  .get(getProject)
+  .get(getSingleProject)
   .patch(editProject)
   .delete(deleteProject);
 

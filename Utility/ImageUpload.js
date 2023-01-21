@@ -4,10 +4,11 @@ const AppError = require('../Middlewares/AppError');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '/Upload');
+    cb(null, '/Users/Public');
   },
   fileName: (req, file, cb) => {
-    cb(null, 'Project - ' + file.originalname);
+    const type = req.file.mimetype.split('/')[1];
+    cb(null, `${req.file.originalname}.${type}`);
   },
 });
 const fileFilter = (req, file, cb) => {
