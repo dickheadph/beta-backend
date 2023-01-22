@@ -55,6 +55,14 @@ const loginAdmin = AsyncHandler(async (req, res, next) => {
   });
 });
 
+const logoutAdmin = AsyncHandler(async (req, res, next) => {
+  res.cookie('jwt', '', {
+    expiresIn: Date(0),
+    secure: true,
+    httpOnly: true,
+  });
+});
+
 const protectRoute = AsyncHandler(async (req, res, next) => {
   const header = req.headers.authorization;
   let token = {};
@@ -80,4 +88,5 @@ module.exports = {
   signupAdmin,
   loginAdmin,
   protectRoute,
+  logoutAdmin
 };
