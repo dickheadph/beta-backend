@@ -11,8 +11,8 @@ app.use('/portfolio/api/projects', projectRoute);
 app.use('/portfolio/api/send-mail', mailRoute);
 app.use('/portfolio/api/admin', adminRoute);
 
-app.all('*', (req, res, next) => {
-  return next(new AppErr(`No path found with: ${req.originalUrl}`));
-});
+// app.all('*', (req, res, next) => {
+//   return next(new AppErr(`No path found with: ${req.originalUrl}`));
+// });
 
 module.exports = app;

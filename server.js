@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const env = require('dotenv');
 
 env.config({ path: './.env' });
-const port = process.env.PORT || 8080;
+//const port = process.env.PORT || 8080;
 const db = process.env.DB_ATLAS;
 
 mongoose.set('strictQuery', true);
@@ -19,9 +19,9 @@ mongoose
     });
 
 
-app.listen(port, () => {
-  console.log(`Server Up and running on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server Up and running on port ${port}`);
+// });
 
 process.on('unhandledRejection', (err) => {
   console.log(`Error name:  ${err.name}. Error message: ${err.message}`);
