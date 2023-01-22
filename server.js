@@ -26,9 +26,9 @@ app.listen(port, () => {
   console.log(`Server Up and running on port ${port}`);
 });
 
-// process.on('unhandledRejection', (err) => {
-//   console.log(`Error name:  ${err.name}. Error message: ${err.message}`);
-//   server.close(() => {
-//     process.exit(1);
-//   });
-// });
+process.on('unhandledRejection', (err) => {
+  console.log(`Error name:  ${err.name}. Error message: ${err.message}`);
+  server.close(() => {
+    process.exit(1);
+  });
+});

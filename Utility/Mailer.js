@@ -5,7 +5,6 @@ const sendEmail = async (options) => {
   //create transport
   const transpoter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
-    //service: 'SendGrid',
     port: 587,
     auth: {
       user: process.env.EMAIL_USER,
@@ -18,7 +17,7 @@ const sendEmail = async (options) => {
     to,
     from,
     subject,
-    message,
+    html: message,
   };
   //send mail
 
