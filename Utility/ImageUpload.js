@@ -6,9 +6,10 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, '/Users/Public');
   },
-  fileName: (req, file, cb) => {
-    const type = req.file.mimetype.split('/')[1];
-    cb(null, `${req.file.originalname}.${type}`);
+  filename: (req, file, cb) => {
+    const type = file.mimetype.split('/')[1];
+    const name = file.originalname.split('.')[0];
+    cb(null, `Project-${name}-${Date.now()}.${type}`);
   },
 });
 const fileFilter = (req, file, cb) => {

@@ -8,7 +8,7 @@ const mailRoute = require('./Routes/mailRoute');
 const adminRoute = require('./Routes/adminRoute');
 
 app.use('/portfolio/api/projects', projectRoute);
-app.use('/portfolio/api/mail-dev', mailRoute);
+app.use('/portfolio/api/send-mail', mailRoute);
 app.use('/portfolio/api/admin', adminRoute);
 
 app.all('*', (req, res, next) => {

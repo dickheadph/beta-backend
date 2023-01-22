@@ -3,7 +3,6 @@ const AsyncHandler = require('../Middlewares/AsyncHandler');
 const Project = require('../Schema/projectSchema');
 const sharp = require('sharp');
 const cloudinary = require('cloudinary').v2;
-const mongoose = require('mongoose');
 
 exports.getProjects = AsyncHandler(async (req, res, next) => {
   const projects = await Project.find();
@@ -36,51 +35,47 @@ exports.getSingleProject = AsyncHandler(async (req, res, next) => {
 
 exports.addProject = AsyncHandler(async (req, res, next) => {
   console.log(req.file);
-  // const { name, desc, live, repo, category } = req.body;
-  
-  // let imageData = {};
-  
-  // if (req.file) {
-  //   let chosenImage;
+  const { name, desc, live, repo, category } = req.body;
 
-  //   try {
-  //     chosenImage = await cloudinary.uploader.upload(req.file.path, {
-  //       folder: 'Edwood_Users',
-  //       resource_type: 'image',
-  //     });
-  //   } catch (error) {
-  //     return new AppError('Something went wrong. Image not uploaded.', 500);
-  //   }
-    
-  //   imageData = {
-  //     fileName: req.file.originalname,
-  //     fileUrl: chosenImage.secure_url,
-  //   };
-  // }
-  
-  // sharp(imageData).toFormat('jpeg').jpeg({ quality: 90 });
-  
-  // console.log(req.file);
-  // const newProject = await Project.create({
-  //   name,
-  //   projectImage: imageData.fileUrl,
-  //   desc,
-  //   live,
-  //   repo,
-  //   category,
-  // });
+  let imageData;
 
-  // if (!newProject) {
-  //   return next(
-  //     new AppError('Create project failed. Check feilds for wrong input.', 404)
-  //   );
-  // }
-  // res.status(200).json({
-  //   status: 'success',
-  //   data: {
-  //     projects: newProject,
-  //   },
-  // });
+  if (req.file) {
+    cloudinary.config({
+      cloud_name: process.env.CLOUD_NAME,
+      api_key: process.env.API_KEY,
+      api_secret: process.env.API_SECRET,
+      secure: true,
+    });
+
+    imageData = await cloudinary.uploader.upload(req.file.path, {
+      folder: 'Portfolio_Projects',
+      resource_type: 'image',
+    });
+  }
+  console.log(imageData);
+
+  //sharp(imageData).toFormat('jpeg').jpeg({ quality: 90 });
+
+  const newProject = await Project.create({
+    name,
+    projectImage: imageData.secure_url,
+    desc,
+    live,
+    repo,
+    category,
+  });
+
+  if (!newProject) {
+    return next(
+      new AppError('Create project failed. Check feilds for wrong input.', 404)
+    );
+  }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      projects: newProject,
+    },
+  });
 });
 
 exports.editProject = AsyncHandler(async (req, res, next) => {

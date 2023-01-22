@@ -3,14 +3,17 @@ const AsyncHandler = require('../Middlewares/AsyncHandler');
 const sendEmail = require('../Utility/Mailer');
 
 exports.sendDevMail = AsyncHandler(async (req, res, next) => {
-  const { from, subject, body } = req.body;
+  const { name, from, subject, body } = req.body;
   //const message = 'Thank you for reaching out. Will get back to you';
   try {
-    await sendEmail({
+    const mail = await sendEmail({
+      name,
       from,
       subject,
       body,
     });
+
+    console.log(mail);
 
     res.status(200).json({
       status: 'success',
