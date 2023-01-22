@@ -2,6 +2,7 @@ const express = require('express');
 //const AppErr = require('./Middlewares/AppError');
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const projectRoute = require('./Routes/projectRoute');
 const mailRoute = require('./Routes/mailRoute');
