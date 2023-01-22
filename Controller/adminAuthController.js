@@ -18,14 +18,13 @@ const signupAdmin = AsyncHandler(async (req, res, next) => {
     return next(new AppErr('Failed to create admin acc.'));
   }
 
-  const token = admin.createJWToken(admin._id);
+  const token = await admin.createJWToken(admin._id);
+  //console.log(token);
 
   res.status(200).json({
     status: 'success',
     token,
-    data: {
-      data: admin,
-    },
+    data: admin,
   });
 });
 
@@ -38,7 +37,7 @@ const loginAdmin = AsyncHandler(async (req, res, next) => {
   const admin = await ADMIN.findOne({ email }).select('+password');
   const match = await admin.comparePasswords(password, admin.password);
 
-  if (!admin && !match) {
+  if (!match) {
     return next(
       new AppErr(
         'Invalid Admin credentials. Please use correct email & password.',
@@ -46,23 +45,24 @@ const loginAdmin = AsyncHandler(async (req, res, next) => {
       )
     );
   }
-  const token = admin.createJWToken(admin._id);
+  const token = await admin.createJWToken(admin._id);
   res.status(200).json({
     status: 'success',
     token,
     data: {
-      data: admin,
+      admin,
     },
   });
 });
 
 const protectRoute = AsyncHandler(async (req, res, next) => {
-  const header = req.params.authorization;
+  const header = req.headers.authorization;
   let token = {};
   if (header && header.startsWith('Bearer')) {
     token = header.split(' ')[1];
   }
 
+  //console.log(token);
   if (!token) {
     return next(new AppErr('You are not allowed to access this route.', 403));
   }
@@ -71,7 +71,7 @@ const protectRoute = AsyncHandler(async (req, res, next) => {
     token,
     process.env.SECRET_KEY
   );
-  const admin = await credentials.findById(credentials.id);
+  const admin = await ADMIN.findById(credentials.id);
 
   req.admin = admin;
   next();

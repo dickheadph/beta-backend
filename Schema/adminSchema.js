@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 const adminSchema = new mongoose.Schema(
   {
     name: {
@@ -21,6 +22,7 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A admin must have a password'],
       minlength: 8,
+      select: false,
     },
     passwordConfirm: {
       type: String,
@@ -43,7 +45,7 @@ const adminSchema = new mongoose.Schema(
 );
 
 adminSchema.pre('save', async function (next) {
-  if (this.isModified('password')) {
+  if (!this.isModified('password')) {
     return next();
   }
 
@@ -57,9 +59,8 @@ adminSchema.methods.comparePasswords = async function (
 ) {
   return await bcrypt.compare(stringedPass, hashedPass);
 };
-
 adminSchema.methods.createJWToken = async function (adminId) {
-  return await jwt.sign({ adminId }, process.env.SECRET_KEY, {
+  return jwt.sign({ id: adminId }, process.env.SECRET_KEY, {
     expiresIn: process.env.VALID_TILL,
   });
 };
