@@ -6,8 +6,8 @@ const env = require('dotenv');
 env.config({ path: './.env' });
 //const port = process.env.PORT || 8080;
 const db = process.env.MONGO_URI;
-
-mongoose.set('strictQuery', true);
+//console.log(db);
+//mongoose.set('strictQuery', true);
 mongoose
   .connect(db)
   .then(() => {
