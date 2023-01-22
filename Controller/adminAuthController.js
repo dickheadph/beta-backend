@@ -88,5 +88,5 @@ module.exports = {
   signupAdmin,
   loginAdmin,
   protectRoute,
-  logoutAdmin
+  logoutAdmin,
 };

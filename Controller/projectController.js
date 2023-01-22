@@ -54,7 +54,7 @@ exports.addProject = AsyncHandler(async (req, res, next) => {
   }
   //console.log(imageData);
 
-  //sharp(imageData).toFormat('jpeg').jpeg({ quality: 90 });
+  sharp(imageData).toFormat('jpeg').jpeg({ quality: 70 });
 
   const newProject = await Project.create({
     name,
