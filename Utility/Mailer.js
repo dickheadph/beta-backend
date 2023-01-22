@@ -3,20 +3,20 @@ const nodemailer = require('nodemailer');
 const sendEmail = async (options) => {
   //create transport
   const transporter = nodemailer.createTransport({
-    // host: '',
-    // port: '',
     service: 'SendGrid',
+    // host: 'smtp.sendgrid.net',
+    // port: 465,
     auth: {
       user: process.env.HOST_USERNAME,
-      pass: process.env.HOST_USERNAME,
+      pass: process.env.HOST_PASSWORD,
     },
   });
   //mail options
-  const { name, from, subject, body } = options;
+  const { name, to, subject, body } = options;
   const mailOptions = {
     name,
-    from,
-    to: `Shan Belgica <${process.env.ADMIN_MAIL}>`,
+    to,
+    from: `Shan Belgica <${process.env.ADMIN_MAIL}>`,
     subject,
     body,
   };

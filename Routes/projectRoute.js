@@ -24,7 +24,7 @@ router.route('/').get(getProjects).post(uploadCover, addProject);
 router
   .route('/:projectId')
   .get(getSingleProject)
-  .patch(editProject)
+  .patch(uploadCover, editProject)
   .delete(deleteProject);
 
 module.exports = router;

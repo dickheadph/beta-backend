@@ -17,8 +17,9 @@ exports.getProjects = AsyncHandler(async (req, res, next) => {
 });
 
 exports.getSingleProject = AsyncHandler(async (req, res, next) => {
-  //console.log(req.params.id);
-  const project = await Project.findById(req.params.id);
+  // console.log('This is a test');
+  // console.log(req.params.projectId);
+  const project = await Project.findById(req.params.projectId);
   //const project = mongoose.Types.ObjectId.isValid(req.params.id);
   if (!project) {
     return next(new AppError('No project found with that Id', 404));
@@ -34,7 +35,6 @@ exports.getSingleProject = AsyncHandler(async (req, res, next) => {
 });
 
 exports.addProject = AsyncHandler(async (req, res, next) => {
-  console.log(req.file);
   const { name, desc, live, repo, category } = req.body;
 
   let imageData;
@@ -52,7 +52,7 @@ exports.addProject = AsyncHandler(async (req, res, next) => {
       resource_type: 'image',
     });
   }
-  console.log(imageData);
+  //console.log(imageData);
 
   //sharp(imageData).toFormat('jpeg').jpeg({ quality: 90 });
 
@@ -79,12 +79,43 @@ exports.addProject = AsyncHandler(async (req, res, next) => {
 });
 
 exports.editProject = AsyncHandler(async (req, res, next) => {
-  const project = await Project.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+  const { name, desc, live, repo, category } = req.body;
+  let imageData;
+
+  if (req.file) {
+    cloudinary.config({
+      cloud_name: process.env.CLOUD_NAME,
+      api_key: process.env.API_KEY,
+      api_secret: process.env.API_SECRET,
+      secure: true,
+    });
+
+    imageData = await cloudinary.uploader.upload(req.file.path, {
+      folder: 'Portfolio_Projects',
+      resource_type: 'image',
+    });
+  }
+  const currentCover = await Project.findById(req.params.projectId).select(
+    '+projectImage'
+  );
+  //console.log(currentCover.projectImage);
+  const project = await Project.findByIdAndUpdate(
+    req.params.projectId,
+    {
+      name,
+      projectImage: req.file ? imageData.secure_url : currentCover.projectImage,
+      desc,
+      live,
+      repo,
+      category,
+    },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
   if (!project) {
-    return next(new AppError('No tour found with that Id.', 404));
+    return next(new AppError('No project found with that Id.', 404));
   }
   res.status(200).json({
     status: 'success',
@@ -95,7 +126,7 @@ exports.editProject = AsyncHandler(async (req, res, next) => {
 });
 
 exports.deleteProject = AsyncHandler(async (req, res, next) => {
-  const project = await Project.findByIdAndDelete(req.params.id);
+  const project = await Project.findByIdAndDelete(req.params.projectId);
 
   if (!project) {
     return next(new AppError('No tour found with that Id.', 404));
