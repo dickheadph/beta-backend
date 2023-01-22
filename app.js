@@ -1,5 +1,5 @@
 const express = require('express');
-const AppErr = require('./Middlewares/AppError');
+//const AppErr = require('./Middlewares/AppError');
 const app = express();
 app.use(express.json());
 

@@ -3,7 +3,7 @@ const AsyncHandler = require('../Middlewares/AsyncHandler');
 const sendEmail = require('../Utility/Mailer');
 
 exports.sendDevMail = AsyncHandler(async (req, res, next) => {
-  const { name, to, from, subject } = req.body;
+  const { name, to, subject } = req.body;
   let uname = name.split(' ')[0];
   const message = `<h2>Hello, ${uname}.</h2>
   <p>Thank you for reaching out.</p>
