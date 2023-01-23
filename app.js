@@ -14,9 +14,9 @@ const projectRoute = require('./Routes/projectRoute');
 const mailRoute = require('./Routes/mailRoute');
 const adminRoute = require('./Routes/adminRoute');
 
-app.use('.onrender.com/projects', projectRoute);
-app.use('.onrender.com/send-mail', mailRoute);
-app.use('.onrender.com/admin', adminRoute);
+app.use('/projects', projectRoute);
+app.use('/send-mail', mailRoute);
+app.use('/admin', adminRoute);
 
 // app.all('*', (req, res, next) => {
 //   return next(new AppErr(`No path found with: ${req.originalUrl}`));
