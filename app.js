@@ -1,8 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 //const AppErr = require('./Middlewares/AppError');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const cors = require('cors');
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'https://beta-ochre.vercel.app'],
+  })
+);
 
 const projectRoute = require('./Routes/projectRoute');
 const mailRoute = require('./Routes/mailRoute');

@@ -20,6 +20,7 @@ const connectDB = async () => {
 };
 
 connectDB();
+
 app.listen(port, () => {
   console.log(`Server Up and running on port ${port}`);
 });
