@@ -5,7 +5,7 @@ require('dotenv').config({ path: './.env' });
 //require('dotenv').config();
 const db = process.env.MONGODB_URI;
 
-//const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 mongoose.set('strictQuery', true);
 //console.log(db);
 const connectDB = async () => {
@@ -20,9 +20,9 @@ const connectDB = async () => {
 };
 
 connectDB();
-// app.listen(port, () => {
-//   console.log(`Server Up and running on port ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Server Up and running on port ${port}`);
+});
 
 // process.on('unhandledRejection', (err) => {
 //   console.log(`Error name:  ${err.name}. Error message: ${err.message}`);
