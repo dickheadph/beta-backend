@@ -1,8 +1,8 @@
 //const app = require('./app');
 const mongoose = require('mongoose');
 
-//require('dotenv').config({ path: './.env' });
-require('dotenv').config();
+require('dotenv').config({ path: './.env' });
+//require('dotenv').config();
 const db = process.env.MONGODB_URI;
 
 //const port = process.env.PORT || 8080;
