@@ -3,10 +3,15 @@ const cors = require('cors');
 //const AppErr = require('./Middlewares/AppError');
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+//app.use(express.urlencoded({ extended: true }));
+// app.use(
+//   cors({
+//     origin: ['http://localhost:5173', 'https://beta-ochre.vercel.app/', 'https://beta-ochre-vercel-app.onrender.com'],
+//   })
+// );
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://beta-ochre.vercel.app/'],
+    origin: '*',
   })
 );
 
