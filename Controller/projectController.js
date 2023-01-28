@@ -129,7 +129,7 @@ exports.deleteProject = AsyncHandler(async (req, res, next) => {
   const project = await Project.findByIdAndDelete(req.params.projectId);
 
   if (!project) {
-    return next(new AppError('No tour found with that Id.', 404));
+    return next(new AppError('No project found with that Id.', 404));
   }
   res.status(201).json({
     status: 'success',

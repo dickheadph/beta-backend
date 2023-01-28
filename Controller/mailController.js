@@ -8,7 +8,7 @@ exports.sendDevMail = AsyncHandler(async (req, res, next) => {
   const newsubject = subject.toLowerCase();
   const message = `<h2>Hello, ${uname}.</h2>
   <p>Thank you for reaching out.</p>
-  <p>It is an honor for me to have a conversation with you about ${newsubject}. Please bear with me for a moment as I have few thing to take care of but no worries. I'lle get back to you ASAP.</p>
+  <p>It is an honor for me to have a conversation with you about ${newsubject}. Please bear with me for a moment as I have few things to tend to but no worries. I'll get back to you ASAP.</p>
   
   <p>Regards...</p>
   <p>Shan Carl Parce Belgica. <em>${process.env.ADMIN_MAIL}</em></p>

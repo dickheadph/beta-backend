@@ -3,17 +3,21 @@ const cors = require('cors');
 //const AppErr = require('./Middlewares/AppError');
 const app = express();
 app.use(express.json());
-//app.use(express.urlencoded({ extended: true }));
-// app.use(
-//   cors({
-//     origin: ['http://localhost:5173', 'https://beta-ochre.vercel.app/', 'https://beta-ochre-vercel-app.onrender.com'],
-//   })
-// );
+app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: '*',
+    origin: [
+      'http://localhost:5173',
+      'https://beta-ochre.vercel.app/',
+      'https://beta-ochre-vercel-app.onrender.com',
+    ],
   })
 );
+// app.use(
+//   cors({
+//     origin: '*',
+//   })
+// );
 
 const projectRoute = require('./Routes/projectRoute');
 const mailRoute = require('./Routes/mailRoute');
@@ -23,8 +27,8 @@ app.use('/projects', projectRoute);
 app.use('/send-mail', mailRoute);
 app.use('/admin', adminRoute);
 
-// app.all('*', (req, res, next) => {
-//   return next(new AppErr(`No path found with: ${req.originalUrl}`));
-// });
+app.all('*', (req, res, next) => {
+  return next(new AppErr(`No path found with: ${req.originalUrl}`));
+});
 
 module.exports = app;
