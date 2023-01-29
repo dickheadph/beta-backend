@@ -1,7 +1,7 @@
 const AppError = require('../Middlewares/AppError');
 const AsyncHandler = require('../Middlewares/AsyncHandler');
 const Project = require('../Schema/projectSchema');
-const sharp = require('sharp');
+//const sharp = require('sharp');
 const cloudinary = require('cloudinary').v2;
 
 exports.getProjects = AsyncHandler(async (req, res, next) => {
@@ -54,7 +54,7 @@ exports.addProject = AsyncHandler(async (req, res, next) => {
   }
   //console.log(imageData);
 
-  sharp(imageData).toFormat('jpeg').jpeg({ quality: 70 });
+  //sharp(imageData).toFormat('jpeg').jpeg({ quality: 70 });
 
   const newProject = await Project.create({
     name,
