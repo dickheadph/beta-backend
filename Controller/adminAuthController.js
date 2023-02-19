@@ -19,7 +19,6 @@ const signupAdmin = AsyncHandler(async (req, res, next) => {
   }
 
   const token = await admin.createJWToken(admin._id);
-  //console.log(token);
 
   res.status(200).json({
     status: 'success',
@@ -70,15 +69,12 @@ const protectRoute = AsyncHandler(async (req, res, next) => {
     token = header.split(' ')[1];
   }
 
-  //console.log(token);
+  //console.log(typeof token);
   if (!token) {
     return next(new AppErr('You are not allowed to access this route.', 403));
   }
 
-  const credentials = await promisify(jwt.verify)(
-    token,
-    process.env.SECRET_KEY
-  );
+  const credentials = await promisify(jwt.verify)(token, process.env.SECRET_KEY);
   const admin = await ADMIN.findById(credentials.id);
 
   req.admin = admin;

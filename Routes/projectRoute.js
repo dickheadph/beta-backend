@@ -20,7 +20,7 @@ const router = express.Router();
 router.get('/full-stack', getFullstack, getProjects);
 router.get('/front-end', getFrontend, getProjects);
 router.get('/back-end-api', getApi, getProjects);
-router.get('/native-app', getApp, getProjects);
+router.get('/native-app', getApp, getProjects); 
 
 router.route('/').get(getProjects).post(protectRoute, uploadCover, addProject);
 router

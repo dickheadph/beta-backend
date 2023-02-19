@@ -9,7 +9,6 @@ app.use(
     origin: [
       'http://localhost:5173',
       'https://beta-ochre.vercel.app',
-      'https://beta-ochre.vercel.app/projects',
       'https://beta-ochre.onrender.com',
     ],
   })
