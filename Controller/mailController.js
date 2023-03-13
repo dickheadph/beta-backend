@@ -19,7 +19,7 @@ exports.sendDevMail = AsyncHandler(async (req, res, next) => {
     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
       <tr>
         <td align="center">
-          <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGVudGVycHJpc2UlMjBidWlsZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Logo" style="display: block; margin: 0 auto;">
+          <img width="100%" src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGVudGVycHJpc2UlMjBidWlsZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Logo" style="display: block; margin: 0 auto;">
         </td>
       </tr>
     </table>
