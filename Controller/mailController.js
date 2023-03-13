@@ -13,13 +13,13 @@ exports.sendDevMail = AsyncHandler(async (req, res, next) => {
     <meta charset="utf-8">
     <title>Personal Transaction</title>
   </head>
-  <body style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5; background-color: #f2f2f2; padding: 20px;">
+  <body style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5; background-color: #f2f2f2;">
   
     <!-- Header -->
     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
       <tr>
         <td align="center">
-          <img style="width: 100%" src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGVudGVycHJpc2UlMjBidWlsZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Logo" style="display: block; margin: 0 auto;">
+          <img style="width: 100%, border-radius: 5px" src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGVudGVycHJpc2UlMjBidWlsZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Logo" style="display: block; margin: 0 auto;">
         </td>
       </tr>
     </table>
