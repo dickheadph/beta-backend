@@ -10,8 +10,9 @@ exports.sendDevMail = AsyncHandler(async (req, res, next) => {
   <p>Thank you for reaching out.</p>
   <p>It is an honor for me to have a conversation with you about ${newsubject}. Please bear with me for a moment as I have few things to tend to but no worries. I'll get back to you ASAP.</p>
   
+  <p>Please reach me out aat my personal mail account at <${process.env.ADMIN_MAIL}></p>
   <p>Regards...</p>
-  <p>Shan Carl Parce Belgica. <em>${process.env.ADMIN_MAIL}</em></p>
+  <p>Shan Carl Parce Belgica.</p>
   <p>MERN Stack Developer</p>
   `;
   //console.log(req.body);
