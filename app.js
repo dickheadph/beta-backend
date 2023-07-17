@@ -8,6 +8,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:5173',
+      'http://127.0.0.1:5174/',
       'https://beta-ochre.vercel.app',
       'https://beta-ochre.onrender.com',
     ],
